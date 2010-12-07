@@ -12,6 +12,17 @@ MobileMedia
 * MiniSD
 * MicroSD
 * MS
+... implements PortableVolume
 
 
 insert/eject
+
+interface PortableVolume
+
+interface Device
+  boolean insert(PortableVolume)
+class UsbPort implements Device
+class OpticalDrive implements Device
+class CardReader implements Device
+
+... oder so irgendwie oder nicht... :-P
