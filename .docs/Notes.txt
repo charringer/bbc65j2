@@ -1,0 +1,17 @@
+HardDisc
+* HD
+* SSD
+OpticalMedia
+* CD
+* DVD
+* BlueRay
+MobileMedia
+* CF1
+* CF2
+* SD
+* MiniSD
+* MicroSD
+* MS
+
+
+insert/eject
