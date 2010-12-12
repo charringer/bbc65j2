@@ -1,6 +1,6 @@
 
 public class Port<A extends Device> {
-	private PortState<A> state;
+	private PortState<A> state = new DisconnectedState();
 	
 	public boolean insert(A a) {
 		return state.insert(a);
@@ -57,7 +57,7 @@ public class Port<A extends Device> {
 
 		@Override
 		public void accept(DeviceVisitor visitor) {
-			a.accept(visitor);
+			visitor.visit(a);
 		}
 		
 	}
