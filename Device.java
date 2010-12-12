@@ -1,2 +1,4 @@
-public class Device {
+
+public interface Device {
+	void accept(DeviceVisitor visitor);
 }

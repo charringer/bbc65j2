@@ -1,2 +1,6 @@
-public class DVD extends BlueRayDisc {
+public class DVD extends BluRayDisk {
+
+	public DVD(String name) {
+		super(name);
+	}
 }
