@@ -2,9 +2,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Root implements Device {
-	private Device[] rootDevices;
+	private RootDevice[] rootDevices;
 	
-	public Root(Device... rootDevices) {
+	public Root(RootDevice... rootDevices) {
 		this.rootDevices = rootDevices;
 	}
 	
