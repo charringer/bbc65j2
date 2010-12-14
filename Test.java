@@ -6,7 +6,7 @@ public class Test {
 				BluRayDriveTest.class,
 				CardReaderTest.class,
 				PortTest.class,
-				RootTest.class);	
+				RootTest.class);
 	}
 
 }
