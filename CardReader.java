@@ -17,8 +17,7 @@ public class CardReader<A extends Device> implements RootDevice {
 		return port.eject();
 	}
 
-	/* implementation of the Visitor pattern
-  	 * therfore calls visit(this) on "visitor" */
+	/* implementation of the Visitor pattern */
 	@Override
 	public void accept(DeviceVisitor visitor) {
 		port.accept(visitor);

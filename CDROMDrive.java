@@ -17,8 +17,8 @@ public class CDROMDrive implements RootDevice {
 		return port.eject();
 	}
 	
-        /* implementation of the Visitor pattern
-	 * therfore calls visit(this) on "visitor" */
+        /* implementation of the Visitor pattern 
+	 * calls visitor.accept over port.accept */
 	@Override
 	public void accept(DeviceVisitor visitor) {
 		port.accept(visitor);

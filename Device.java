@@ -1,6 +1,5 @@
 
 public interface Device {
-	/* implementation of the Visitor pattern
-	 * therfore should calls visit(this) on "visitor" */
+	/* implementation of the Visitor pattern */
 	void accept(DeviceVisitor visitor);
 }
