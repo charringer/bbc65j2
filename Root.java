@@ -10,16 +10,11 @@ public class Root implements Device {
 	
 	public List<String> volumes() {
 		final List<String> names = new ArrayList<String>();
-		accept(new DeviceVisitor() {
+		accept(new AbstractDeviceVisitor() {
 			
 			@Override
 			public void visit(Volume vol) {
 				names.add(vol.getName());
-			}
-			
-			@Override
-			public void visit(Device device) {
-				device.accept(this);
 			}
 		});
 		return names;
