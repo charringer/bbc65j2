@@ -36,7 +36,10 @@ public class RootTest extends Assert {
 	@Tst
 	public void volumes_shouldNotReturnRemovedVolumes() {
 		cdd.insert(new CDROM("cd"));
+		usb1.insert(hdapt);
+		
 		cdd.eject();
+		usb1.eject();
 		
 		assertEquals(Arrays.asList("hdd", "ssd"),
 				root.volumes());
