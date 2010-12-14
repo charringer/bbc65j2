@@ -42,5 +42,6 @@ public class USBHardDiskAdapterTest extends Assert {
 	public void adaptsToSSDsToo() {
 		SSD internalSSD = new SSD("kleine Platte");
 		USBHardDiskAdapter<SSD> usbSSD = new USBHardDiskAdapter<SSD>(internalSSD);
+		assertTrue(usbPort.insert(usbSSD));
 	}
 }
