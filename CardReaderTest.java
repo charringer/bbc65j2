@@ -13,6 +13,8 @@ public class CardReaderTest extends Assert {
 	private MiniSD msd;
 	private MicroSD usd;
 	
+	private boolean visitCalled;
+	
 	@Before
 	public void setUp() {
 		cf1r = new CardReader<CF1>();
@@ -26,6 +28,8 @@ public class CardReaderTest extends Assert {
 		sd = new SD("sd");
 		msd = new MiniSD("msd");
 		usd = new MicroSD("usd");
+		
+		visitCalled = false;
 	}
 	
 	@Tst
@@ -74,5 +78,30 @@ public class CardReaderTest extends Assert {
 		cf2r.insert(cf2);
 		assertTrue(cf2r.eject());
 		assertFalse(cf2r.eject());
+	}
+	
+	@Tst
+	public void accept_shouldCallVisitVolume() {
+		cf2r.insert(cf2);
+		cf2r.accept(new AbstractDeviceVisitor() {
+			
+			@Override
+			public void visit(Volume vol) {
+				assertEquals(cf2, vol);
+				visitCalled = true;
+			}
+		});
+		assertTrue(visitCalled);
+	}
+	
+	@Tst
+	public void accept_shouldNotCallVisitVolumeUnlessInserted() {
+		cf2r.accept(new AbstractDeviceVisitor() {
+			
+			@Override
+			public void visit(Volume vol) {
+				assertFalse(true);
+			}
+		});
 	}
 }

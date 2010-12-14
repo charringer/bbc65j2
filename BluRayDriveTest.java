@@ -6,12 +6,15 @@ public class BluRayDriveTest extends Assert {
 	private DVD dvd;
 	private CDROM cd;
 	
+	private boolean visitCalled;
+	
 	@Before
 	public void setUp() {
 		bdd = new BluRayDrive();
 		bd = new BluRayDisk("bd");
 		dvd = new DVD("dvd");
 		cd = new CDROM("cd");
+		visitCalled = false;
 	}
 	
 	@Tst
@@ -51,6 +54,31 @@ public class BluRayDriveTest extends Assert {
 		bdd.insert(dvd);
 		bdd.eject();
 		assertFalse(bdd.eject());
+	}
+	
+	@Tst
+	public void accept_shouldCallVisitVolume() {
+		bdd.insert(dvd);
+		bdd.accept(new AbstractDeviceVisitor() {
+			
+			@Override
+			public void visit(Volume vol) {
+				assertEquals(dvd, vol);
+				visitCalled = true;
+			}
+		});
+		assertTrue(visitCalled);
+	}
+	
+	@Tst
+	public void accept_shouldNotCallVisitVolumeUnlessInserted() {
+		bdd.accept(new AbstractDeviceVisitor() {
+			
+			@Override
+			public void visit(Volume vol) {
+				assertFalse(true);
+			}
+		});
 	}
 
 }
