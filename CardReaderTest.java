@@ -6,12 +6,14 @@ public class CardReaderTest extends Assert {
 	private CardReader<SD>  sdr;
 	private CardReader<MiniSD> msdr;
 	private CardReader<MicroSD> usdr;
+	private CardReader<MemoryStick> msr;
 	
 	private CF2 cf2;
 	private CF1 cf1;
 	private SD sd;
 	private MiniSD msd;
 	private MicroSD usd;
+	private MemoryStick ms;
 	
 	private boolean visitCalled;
 	
@@ -22,12 +24,14 @@ public class CardReaderTest extends Assert {
 		sdr = new CardReader<SD>();
 		msdr = new CardReader<MiniSD>();
 		usdr = new CardReader<MicroSD>();
+		msr = new CardReader<MemoryStick>();
 		
 		cf1 = new CF1("cf1");
 		cf2 = new CF2("cf2");
 		sd = new SD("sd");
 		msd = new MiniSD("msd");
 		usd = new MicroSD("usd");
+		ms = new MemoryStick("ms");
 		
 		visitCalled = false;
 	}
@@ -60,6 +64,9 @@ public class CardReaderTest extends Assert {
 		
 		assertTrue(usdr.insert(usd));
 		assertTrue(usdr.eject());
+		
+		assertTrue(msr.insert(ms));
+		assertTrue(msr.eject());
 	}
 	
 	@Tst
